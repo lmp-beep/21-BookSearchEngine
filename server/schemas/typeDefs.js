@@ -11,18 +11,18 @@ type User {
 
 type Book {
     bookId: String
-    title: String
     authors: [String]
     description: String
+    title: String
     image: String
     link: String
 }
 
 input savedBook {
     bookId: String
-    title: String
     authors: [String]
     description: String
+    title: String
     image: String
     link: String
 }
