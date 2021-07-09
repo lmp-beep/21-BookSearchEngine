@@ -4,6 +4,8 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { createUser } from '../utils/API';
 import Auth from '../utils/auth';
 
+// IMPORT MUTATIONS---------------------------------------------------------------------------------
+
 const SignupForm = () => {
   // set initial form state
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
@@ -11,6 +13,8 @@ const SignupForm = () => {
   const [validated] = useState(false);
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
+
+  // MUTATION---------------------------------------------------------------------------------------
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
