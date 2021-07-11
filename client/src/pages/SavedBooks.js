@@ -2,7 +2,6 @@
 // 	* Instead, use the `useQuery()` Hook to execute the `GET_ME` query on load and save it to a variable named `userData`.
 // 	* Use the `useMutation()` Hook to execute the `REMOVE_BOOK` mutation in the `handleDeleteBook()` function instead of the `deleteBook()` function that's imported from `API` file. (Make sure you keep the `removeBookId()` function in place!)
 
-
 // import React, { useState, useEffect } from 'react';
 import React from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
@@ -12,20 +11,18 @@ import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 
 // IMPORT MUTATIONS AND QUERIES----------------------------------------
-import { useMutation, useQuery } from '@apollo/react-hooks';
-import { GET_ME } from '../utils/queries';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { REMOVE_BOOK } from '../utils/mutations';
-
+import { GET_ME } from '../utils/queries';
 
 const SavedBooks = () => {
 
   const { loading, data } = useQuery(GET_ME);
   const [removeBook, { error }] = useMutation(REMOVE_BOOK);
 
-  const userData = data?.me || [];
+  const userData = data?.me || {};
 
-
-  // const [userData, setUserData] = useState({});
+    // const [userData, setUserData] = useState({});
 
   // use this to determine if `useEffect()` hook needs to run again
   // const userDataLength = Object.keys(userData).length;
@@ -65,12 +62,12 @@ const SavedBooks = () => {
 
     try {
       // const response = await deleteBook(bookId, token);
-      const { data } = await removeBook({
+      await removeBook({
         variables: { bookId }
       });
 
       if (error) {
-        throw new Error('something went wrong!');
+        throw new Error('Something went wrong!');
       }
 
       // const updatedUser = await response.json();

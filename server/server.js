@@ -17,9 +17,9 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware
-})
+});
 
-server.applyMiddleware({app});
+server.applyMiddleware({ app });
 
 // if we're in production, serve client/build as static assets
 if (process.env.NODE_ENV === 'production') {
@@ -34,11 +34,8 @@ app.get('*', (req, res) => {
 
 db.once('open', () => {
   app.listen(PORT, () => {
-    console.log(`🌍 Now listening on localhost:${PORT}`);
+    console.log(`API server running on port ${PORT}!`);
+    // log where we can go to test our GQL API
     console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
   });
-});
-
-process.on('uncaughtException', function(err) {
-  console.log('Caught exception: ' + err);
 });
