@@ -15,7 +15,7 @@ This Book Search Engine uses the entire MERN Stack, with a MongoDB database, an 
 <br/><br/>
 
 ## Deployed Application
-LINK
+https://lmp-book-search.herokuapp.com/
 ***
 <br/><br/>
 
